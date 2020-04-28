@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
     <Product Id="*" Name="Limudisk-5-7" Language="1037" Version="0.0.26" Manufacturer="artNsmart" UpgradeCode="3D3B43CD-9A3B-430B-BC82-FEADCAFAEFF8">
         <Package Description="Limudisk - artNsmart" Comments="artNsmart" InstallerVersion="200" Compressed="yes" />
         <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
         <Directory Id="TARGETDIR" Name="SourceDir">
-            <Directory Id="ProgramFilesFolder" Name="PFiles">
-                <Directory Id="LIMUDISK" Name="Limudisk5-7">
-                    <!-- Start -->
-                    <!-- End-->
-                </Directory>
-            </Directory>
             <Directory Id="DesktopFolder" />
             <Directory Id="ProgramMenuFolder">
                 <Directory Id="ProgramMenuDir" Name="Limudisk5-7">
@@ -17,7 +11,7 @@
                         <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
                         <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" />
                         <Shortcut Id="UninstallApp" Name="Uninstall Limudisk-5-7" Description="Uninstalls the Limudisk app" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
-                        <util:InternetShortcut Id="WebsiteShortcut" Name="Limudisk" Target="https://www.limudisk.com/" />
+                        <util:InternetShortcut Id="WebsiteShortcut" Name="Limudisk" Target="https://www.limudisk.com/" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension" />
                     </Component>
                 </Directory>
             </Directory>
