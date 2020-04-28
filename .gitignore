@@ -353,3 +353,6 @@ MigrationBackup/
 /Installer/*.exe
 /Installer/*.msi
 /Installer/*.wixpdb
+/WixEdit/*.wixobj
+/WixEdit/*.msi
+/WixEdit/*.wixpdb
