@@ -28,13 +28,22 @@
         <Feature Id="DefaultFeature" Title="Main Feature" Level="1">
             <ComponentRef Id="StartMenuShortcuts" />
         </Feature>
-        <UI />
         <UIRef Id="WixUI_Minimal" />
         <PropertyRef Id="NETFRAMEWORK35" />
         <Condition Message="Limudisk requires Microsoft .NET Framework 3.5 or greater needs to be installed for this installation to continue."><![CDATA[Installed OR NETFRAMEWORK35]]></Condition>
+        <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+		
+        <!-- depending on what components you want, you may need to add additional features to this command line -->
+        <CustomAction Id="AddNet35Component" Property="Net35Component" Value="&quot;[SystemFolder]dism.exe&quot; /norestart /quiet /online /enable-feature /featurename:NetFx3" Execute="immediate" />
+        <CustomAction Id="Net35Component" BinaryKey="WixCA" DllEntry="CAQuietExec" Execute="deferred" Return="ignore" Impersonate="no" />
         <InstallExecuteSequence>
             <RemoveExistingProducts Before="InstallInitialize" />
+            <Custom Action="AddNet35Component" After="CostFinalize" />
+            <Custom Action="Net35Component" After="InstallInitialize"><![CDATA[(NOT Installed)]]></Custom>
         </InstallExecuteSequence>
-        <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+        <UI>
+            <ProgressText Action="Net35Component">Enabling .Net 3.5</ProgressText>
+        </UI>
+		
     </Product>
 </Wix>
