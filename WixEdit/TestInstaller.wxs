@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-    <Product Id="*" Name="Limudisk-5-7" Language="1037" Version="0.0.26" Manufacturer="artNsmart" UpgradeCode="3D3B43CD-9A3B-430B-BC82-FEADCAFAEFF8">
+    <Product Id="*" Name="Limudisk-5-7" Language="1033" Version="0.0.26" Manufacturer="artNsmart" UpgradeCode="3D3B43CD-9A3B-430B-BC82-FEADCAFAEFF8">
         <Package Description="Limudisk - artNsmart" Comments="artNsmart" InstallerVersion="200" Compressed="yes" />
         <!-- depending on what components you want, you may need to add additional features to this command line -->
         <CustomAction Id="AddNet35Component" Property="Net35Component" Value="&quot;[SystemFolder]dism.exe&quot; /norestart /quiet /online /enable-feature /featurename:NetFx3" Execute="immediate" />
@@ -18,5 +18,6 @@
             </Component>
         </Directory>
         <Feature Id="MainFeature" Level="1" />
+        <UIRef Id="WixUI_Minimal" />
     </Product>
 </Wix>
