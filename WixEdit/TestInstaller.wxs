@@ -3,9 +3,6 @@
     <Product Id="*" Name="Limudisk-5-7" Language="1037" Version="0.0.26" Manufacturer="artNsmart" UpgradeCode="3D3B43CD-9A3B-430B-BC82-FEADCAFAEFF8">
         <Package Description="Limudisk - artNsmart" Comments="artNsmart" InstallerVersion="200" Compressed="yes" />
         <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
-        <Upgrade Id="3D3B43CD-9A3B-430B-BC82-FEADCAFAEFF8">
-            <UpgradeVersion Property="PREVIOUSVERSIONSINSTALLED" Minimum="0.0.13" Maximum="0.0.99" RemoveFeatures="ALL" IncludeMinimum="yes" IncludeMaximum="no" />
-        </Upgrade>
         <Directory Id="TARGETDIR" Name="SourceDir">
             <Directory Id="ProgramFilesFolder" Name="PFiles">
                 <Directory Id="LIMUDISK" Name="Limudisk5-7">
@@ -32,7 +29,6 @@
         <PropertyRef Id="NETFRAMEWORK35" />
         <Condition Message="Limudisk requires Microsoft .NET Framework 3.5 or greater needs to be installed for this installation to continue."><![CDATA[Installed OR NETFRAMEWORK35]]></Condition>
         <Property Id="ARPPRODUCTICON" Value="icon.ico" />
-		
         <!-- depending on what components you want, you may need to add additional features to this command line -->
         <CustomAction Id="AddNet35Component" Property="Net35Component" Value="&quot;[SystemFolder]dism.exe&quot; /norestart /quiet /online /enable-feature /featurename:NetFx3" Execute="immediate" />
         <CustomAction Id="Net35Component" BinaryKey="WixCA" DllEntry="CAQuietExec" Execute="deferred" Return="ignore" Impersonate="no" />
@@ -44,6 +40,5 @@
         <UI>
             <ProgressText Action="Net35Component">Enabling .Net 3.5</ProgressText>
         </UI>
-		
     </Product>
 </Wix>
