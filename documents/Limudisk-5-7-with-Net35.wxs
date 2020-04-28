@@ -337,18 +337,20 @@
         <Icon Id="icon.ico" SourceFile="images\5-7.ico" />
         <Property Id="ARPPRODUCTICON" Value="icon.ico" />
 		
-        <!-- depending on what components you want, you may need to add additional features to this command line -->
+        <!-- START NET 3.5 -->
         <CustomAction Id="AddNet35Component" Property="Net35Component" Value="&quot;[SystemFolder]dism.exe&quot; /norestart /quiet /online /enable-feature /featurename:NetFx3" Execute="immediate" />
         <CustomAction Id="Net35Component" BinaryKey="WixCA" DllEntry="CAQuietExec" Execute="deferred" Return="ignore" Impersonate="no" />
         <InstallExecuteSequence>
-            <RemoveExistingProducts Before="InstallInitialize" />
-            <Custom Action="UninstallSecurityCheckAction" After="InstallInitialize">(NOT UPGRADINGPRODUCTCODE) AND (REMOVE="ALL")</Custom>
-            <Custom Action="LaunchFile" After="InstallFinalize" />
+            <RemoveExistingProducts Before="InstallInitialize" /> <!-- NOT REQUIRED FOR .NET 3.5, But must be inside InstallExecuteSequence in this project -->
+            <Custom Action="UninstallSecurityCheckAction" After="InstallInitialize">(NOT UPGRADINGPRODUCTCODE) AND (REMOVE="ALL")</Custom> <!-- NOT REQUIRED FOR .NET 3.5, But must be inside InstallExecuteSequence in this project -->
+            <Custom Action="LaunchFile" After="InstallFinalize" /> <!-- NOT REQUIRED FOR .NET 3.5, But must be inside InstallExecuteSequence in this project -->
             <Custom Action="AddNet35Component" After="CostFinalize" />
             <Custom Action="Net35Component" After="InstallInitialize"><![CDATA[(NOT Installed)]]></Custom>
         </InstallExecuteSequence>
         <UI>
             <ProgressText Action="Net35Component">Enabling .Net 3.5</ProgressText>
         </UI>
+        <!-- END NET 3.5 -->
+		
     </Product>
 </Wix>
