@@ -328,8 +328,6 @@
         <UIRef Id="WixUI_Minimal" />
         <WixVariable Id="WixUIDialogBmp" Value="images\main.bmp" />
         <WixVariable Id="WixUIBannerBmp" Value="images\banner.bmp" />
-        <PropertyRef Id="NETFRAMEWORK35" />
-        <Condition Message="Limudisk requires Microsoft .NET Framework 3.5 or greater needs to be installed for this installation to continue."><![CDATA[Installed OR NETFRAMEWORK35]]></Condition>
         <Icon Id="DesktopIcon.exe" SourceFile="Limudisk\Limudisk-5-7.exe" />
         <Icon Id="StartMenuIcon.exe" SourceFile="Limudisk\Limudisk-5-7.exe" />
         <WixVariable Id="WixUILicenseRtf" Value="D:\JK\Limudisk-release\licensetext.rtf" />
