@@ -325,7 +325,6 @@
             <ComponentRef Id="_7ZA.EXE_1" />
             <ComponentRef Id="_7ZA.DLL_1" />
         </Feature>
-        <UI />
         <UIRef Id="WixUI_Minimal" />
         <WixVariable Id="WixUIDialogBmp" Value="images\main.bmp" />
         <WixVariable Id="WixUIBannerBmp" Value="images\banner.bmp" />
@@ -337,12 +336,21 @@
         <CustomAction Id="LaunchFile" FileKey="LIMUDISK_5_7.EXE" ExeCommand="" Return="asyncNoWait" />
         <CustomAction Id="UninstallSecurityCheckAction" BinaryKey="BUnInstallSecurityCheckAction" DllEntry="LicenseClaimAction" Execute="deferred" Return="check" />
         <Binary Id="BUnInstallSecurityCheckAction" SourceFile="dll\SecurityCheckAction.CA.dll" />
+        <Icon Id="icon.ico" SourceFile="images\5-7.ico" />
+        <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+		
+        <!-- depending on what components you want, you may need to add additional features to this command line -->
+        <CustomAction Id="AddNet35Component" Property="Net35Component" Value="&quot;[SystemFolder]dism.exe&quot; /norestart /quiet /online /enable-feature /featurename:NetFx3" Execute="immediate" />
+        <CustomAction Id="Net35Component" BinaryKey="WixCA" DllEntry="CAQuietExec" Execute="deferred" Return="ignore" Impersonate="no" />
         <InstallExecuteSequence>
             <RemoveExistingProducts Before="InstallInitialize" />
             <Custom Action="UninstallSecurityCheckAction" After="InstallInitialize">(NOT UPGRADINGPRODUCTCODE) AND (REMOVE="ALL")</Custom>
             <Custom Action="LaunchFile" After="InstallFinalize" />
+            <Custom Action="AddNet35Component" After="CostFinalize" />
+            <Custom Action="Net35Component" After="InstallInitialize"><![CDATA[(NOT Installed)]]></Custom>
         </InstallExecuteSequence>
-        <Icon Id="icon.ico" SourceFile="images\5-7.ico" />
-        <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+        <UI>
+            <ProgressText Action="Net35Component">Enabling .Net 3.5</ProgressText>
+        </UI>
     </Product>
 </Wix>
