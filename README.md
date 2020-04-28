@@ -2,7 +2,7 @@
 Shows an example Wix file that includes .Net 3.5 during installation
 
 ### Requirements
-In some cases, you may need to use custom build command:
+In some cases(Depending on the use of util:), you may need to use custom build command:
 ```
 light -nologo -ext WixUIExtension -ext WixUtilExtension Installer.wixobj -o Installer.msi
 ```
