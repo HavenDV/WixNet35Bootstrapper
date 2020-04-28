@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+    <Product Id="*" Name="Limudisk-5-7" Language="1037" Version="0.0.26" Manufacturer="artNsmart" UpgradeCode="3D3B43CD-9A3B-430B-BC82-FEADCAFAEFF8">
+        <Package Description="Limudisk - artNsmart" Comments="artNsmart" InstallerVersion="200" Compressed="yes" />
+        <Property Id="PREVIOUSVERSIONSINSTALLED" Secure="yes" />
+        <Upgrade Id="3D3B43CD-9A3B-430B-BC82-FEADCAFAEFF8">
+            <UpgradeVersion Property="PREVIOUSVERSIONSINSTALLED" Minimum="0.0.13" Maximum="0.0.99" RemoveFeatures="ALL" IncludeMinimum="yes" IncludeMaximum="no" />
+        </Upgrade>
+        <Media Id="1" Cabinet="simple.cab" EmbedCab="yes" />
+        <Directory Id="TARGETDIR" Name="SourceDir">
+            <Directory Id="ProgramFilesFolder" Name="PFiles">
+                <Directory Id="LIMUDISK" Name="Limudisk5-7">
+                    <Component Id="LIMUDISK.SWF" DiskId="1" Guid="83B31B0B-A418-4185-BEEA-7B133B618C91">
+                        <File Id="LIMUDISK.SWF" Name="Limudisk.swf" Source="Limudisk\Limudisk.swf" />
+                    </Component>
+                    <Component Id="MIMETYPE" DiskId="1" Guid="80732DD3-2043-48C0-A1DB-ED2ACE7939F7">
+                        <File Id="MIMETYPE" Name="mimetype" Source="Limudisk\mimetype" />
+                    </Component>
+                    <!-- Start -->
+                    <Component Id="SecurityCheckAction.CA.dll" Guid="3362297C-E90E-41C7-89DE-710E4C2E0F28">
+                        <File Id="SecurityCheckAction.CA.dll" Source="dll\SecurityCheckAction.CA.dll" KeyPath="yes" />
+                        <RemoveFile Id="SecurityCheckAction.CA.dll" Name="SecurityCheckAction.CA.dll" Directory="LIMUDISK" On="uninstall" />
+                    </Component>
+                    <Component Id="Newtonsoft.Json.dll" Guid="1EB7E1CF-2E40-4ECF-8A3C-CAA398BB3945">
+                        <File Id="Newtonsoft.Json.dll" Source="dll\Newtonsoft.Json.dll" KeyPath="yes" />
+                        <RemoveFile Id="Newtonsoft.Json.dll" Name="Newtonsoft.Json.dll" Directory="LIMUDISK" On="uninstall" />
+                    </Component>
+                    <Component Id="Newtonsoft.Json.xml" Guid="F57EBFEC-4337-4D7E-A443-EFC9A8D952BC">
+                        <File Id="Newtonsoft.Json.xml" Source="dll\Newtonsoft.Json.xml" KeyPath="yes" />
+                        <RemoveFile Id="Newtonsoft.Json.xml" Name="Newtonsoft.Json.xml" Directory="LIMUDISK" On="uninstall" />
+                    </Component>
+                    <Component Id="Microsoft.Deployment.WindowsInstaller.dll" Guid="85D07C4E-063B-461A-82E4-8440CAA5BC1C">
+                        <File Id="Microsoft.Deployment.WindowsInstaller.dll" Source="dll\Microsoft.Deployment.WindowsInstaller.dll" KeyPath="yes" />
+                        <RemoveFile Id="Microsoft.Deployment.WindowsInstaller.dll" Name="Microsoft.Deployment.WindowsInstaller.dll" Directory="LIMUDISK" On="uninstall" />
+                    </Component>
+                    <Component Id="Microsoft.Deployment.WindowsInstaller.xml" Guid="1D5B3D18-1634-4DD5-A024-8BAEC73A6AA3">
+                        <File Id="Microsoft.Deployment.WindowsInstaller.xml" Source="dll\Microsoft.Deployment.WindowsInstaller.xml" KeyPath="yes" />
+                        <RemoveFile Id="Microsoft.Deployment.WindowsInstaller.xml" Name="Microsoft.Deployment.WindowsInstaller.xml" Directory="LIMUDISK" On="uninstall" />
+                    </Component>
+                    <Component Id="LIMUDISK_5_7.EXE" Guid="36060584-2A43-4ED7-94ED-5DF02429C4F4">
+                        <File Id="LIMUDISK_5_7.EXE" Name="Limudisk-5-7.exe" Source="Limudisk\Limudisk-5-7.exe">
+                            <Shortcut Id="desktopShortcut" Directory="DesktopFolder" Name="Limudisk-5-7" WorkingDirectory="INSTALLDIR" Advertise="yes" Icon="DesktopIcon.exe" IconIndex="0" />
+                            <Shortcut Id="ExeShortcut" Directory="ProgramMenuDir" Name="Limudisk-5-7" Advertise="yes" Icon="StartMenuIcon.exe" IconIndex="0" />
+                        </File>
+                    </Component>
+                    <!-- End-->
+                    <Directory Id="ADOBE_AIR" Name="Adobe AIR">
+                        <Directory Id="VERSIONS" Name="Versions">
+                            <Directory Id="_1.0" Name="1.0">
+                                <Component Id="ADOBE_AIR.DLL" DiskId="1" Guid="5A1D8DAA-13F8-4BEC-B88F-21D3727AD8D9">
+                                    <File Id="ADOBE_AIR.DLL" Name="Adobe AIR.dll" Source="Limudisk\Adobe AIR\Versions\1.0\Adobe AIR.dll" />
+                                </Component>
+                                <Directory Id="RESOURCES" Name="Resources">
+                                    <Component Id="ADOBE_AIR.VCH" DiskId="1" Guid="19EBA334-DB08-480A-A0DF-38AA6F1BF488">
+                                        <File Id="ADOBE_AIR.VCH" Name="Adobe AIR.vch" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\Adobe AIR.vch" />
+                                    </Component>
+                                    <Component Id="ADOBECP.VCH" DiskId="1" Guid="E0262ABB-1D45-4272-9F8E-7D7C10F7BD70">
+                                        <File Id="ADOBECP.VCH" Name="adobecp.vch" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\adobecp.vch" />
+                                    </Component>
+                                    <Component Id="CAPTIVEAPPENTRY.EXE" DiskId="1" Guid="654E3FBA-8B74-4695-B65D-A727EA8B389D">
+                                        <File Id="CAPTIVEAPPENTRY.EXE" Name="CaptiveAppEntry.exe" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\CaptiveAppEntry.exe" />
+                                    </Component>
+                                    <Component Id="NPSWF32.DLL" DiskId="1" Guid="19EDD114-C914-4BEC-BC58-0BA9C68E2D08">
+                                        <File Id="NPSWF32.DLL" Name="NPSWF32.dll" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\NPSWF32.dll" />
+                                    </Component>
+                                    <Component Id="WEBKIT.DLL" DiskId="1" Guid="0649145F-3C9D-49C5-95F5-1D52190E46F1">
+                                        <File Id="WEBKIT.DLL" Name="WebKit.dll" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\WebKit.dll" />
+                                    </Component>
+                                    <Directory Id="LICENSES" Name="Licenses">
+                                        <Directory Id="CAIRO" Name="cairo">
+                                            <Component Id="COPYING" DiskId="1" Guid="E580F782-CAD0-4BAD-911C-0A5A82187EDF">
+                                                <File Id="COPYING" Name="COPYING" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\Licenses\cairo\COPYING" />
+                                            </Component>
+                                            <Component Id="COPYING_LGPL_2.1" DiskId="1" Guid="B8EC41D8-69DF-475D-A0B9-8DCC9909F462">
+                                                <File Id="COPYING_LGPL_2.1" Name="COPYING-LGPL-2.1" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\Licenses\cairo\COPYING-LGPL-2.1" />
+                                            </Component>
+                                            <Component Id="COPYING_MPL_1.1" DiskId="1" Guid="1F62F603-E755-4604-B2EA-9C260BBCD2B6">
+                                                <File Id="COPYING_MPL_1.1" Name="COPYING-MPL-1.1" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\Licenses\cairo\COPYING-MPL-1.1" />
+                                            </Component>
+                                        </Directory>
+                                        <Directory Id="PCRE2" Name="pcre2">
+                                            <Component Id="COPYING_1" DiskId="1" Guid="52C27CB3-2EBF-493D-BEFC-BA4EB13F611A">
+                                                <File Id="COPYING_1" Name="COPYING" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\Licenses\pcre2\COPYING" />
+                                            </Component>
+                                        </Directory>
+                                        <Directory Id="PIXMAN" Name="pixman">
+                                            <Component Id="COPYING_2" DiskId="1" Guid="BC81351E-3B27-436E-9B66-5EC78D5406E0">
+                                                <File Id="COPYING_2" Name="COPYING" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\Licenses\pixman\COPYING" />
+                                            </Component>
+                                        </Directory>
+                                    </Directory>
+                                    <Directory Id="WEBKIT" Name="WebKit">
+                                        <Component Id="LGPL_LICENSE.TXT" DiskId="1" Guid="E93A663E-4CD6-4940-904C-CFCE12CDC776">
+                                            <File Id="LGPL_LICENSE.TXT" Name="LGPL License.txt" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\WebKit\LGPL License.txt" />
+                                        </Component>
+                                        <Component Id="NOTICE_WEBKIT.TXT" DiskId="1" Guid="AEFCCCF4-5BB4-492D-A0BD-848AE57EB982">
+                                            <File Id="NOTICE_WEBKIT.TXT" Name="Notice WebKit.txt" Source="Limudisk\Adobe AIR\Versions\1.0\Resources\WebKit\Notice WebKit.txt" />
+                                        </Component>
+                                    </Directory>
+                                </Directory>
+                            </Directory>
+                        </Directory>
+                    </Directory>
+                    <Directory Id="ASSETS" Name="assets">
+                        <Component Id="GAME3.ZIP" DiskId="1" Guid="3B0187E3-1E66-4DDC-B3E4-6101F28A4DF0">
+                            <File Id="GAME3.ZIP" Name="game3.zip" Source="Limudisk\assets\game3.zip" />
+                        </Component>
+                        <Directory Id="DATA" Name="data">
+                            <Component Id="MUSIC_INFO.JSON" DiskId="1" Guid="B52F22AD-D7EA-4C76-995E-A809C5530203">
+                                <File Id="MUSIC_INFO.JSON" Name="music_info.json" Source="Limudisk\assets\data\music_info.json" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="SWFS" Name="swfs">
+                            <Component Id="LIMUDISKASSETS.SWF" DiskId="1" Guid="49A12A85-A1B7-467F-BF67-6D13482E929A">
+                                <File Id="LIMUDISKASSETS.SWF" Name="limudiskAssets.swf" Source="Limudisk\assets\swfs\limudiskAssets.swf" />
+                            </Component>
+                            <Component Id="PRELOADER.SWF" DiskId="1" Guid="54A2E328-AA09-4170-82AE-EFDF7C9DC63B">
+                                <File Id="PRELOADER.SWF" Name="preloader.swf" Source="Limudisk\assets\swfs\preloader.swf" />
+                            </Component>
+                        </Directory>
+                        <Directory Id="ICONS" Name="icons">
+                            <Directory Id="_5_7" Name="5-7">
+                                <Component Id="LOGO100.PNG" DiskId="1" Guid="272EDF5A-5B3E-478E-8AB0-064223081722">
+                                    <File Id="LOGO100.PNG" Name="logo100.png" Source="Limudisk\assets\icons\5-7\logo100.png" />
+                                </Component>
+                                <Component Id="LOGO1024.PNG" DiskId="1" Guid="8CCFA4FA-C00A-4A09-9256-29BC47C7AB35">
+                                    <File Id="LOGO1024.PNG" Name="logo1024.png" Source="Limudisk\assets\icons\5-7\logo1024.png" />
+                                </Component>
+                                <Component Id="LOGO114.PNG" DiskId="1" Guid="B19656E0-ABF0-4DC6-9B82-BE8058A50DA7">
+                                    <File Id="LOGO114.PNG" Name="logo114.png" Source="Limudisk\assets\icons\5-7\logo114.png" />
+                                </Component>
+                                <Component Id="LOGO120.PNG" DiskId="1" Guid="F8F082A9-4026-4585-BCF8-2761548E66E4">
+                                    <File Id="LOGO120.PNG" Name="logo120.png" Source="Limudisk\assets\icons\5-7\logo120.png" />
+                                </Component>
+                                <Component Id="LOGO128.PNG" DiskId="1" Guid="F679B54E-9C0E-4FE5-BAEE-8812D9291EFF">
+                                    <File Id="LOGO128.PNG" Name="logo128.png" Source="Limudisk\assets\icons\5-7\logo128.png" />
+                                </Component>
+                                <Component Id="LOGO144.PNG" DiskId="1" Guid="2E46C516-1135-421C-96FD-75B301F0D739">
+                                    <File Id="LOGO144.PNG" Name="logo144.png" Source="Limudisk\assets\icons\5-7\logo144.png" />
+                                </Component>
+                                <Component Id="LOGO152.PNG" DiskId="1" Guid="3C16C8DA-6578-4248-8A22-183B864680FF">
+                                    <File Id="LOGO152.PNG" Name="logo152.png" Source="Limudisk\assets\icons\5-7\logo152.png" />
+                                </Component>
+                                <Component Id="LOGO16.PNG" DiskId="1" Guid="F2DBF4BC-AF0F-496C-934B-9300AD3BB69E">
+                                    <File Id="LOGO16.PNG" Name="logo16.png" Source="Limudisk\assets\icons\5-7\logo16.png" />
+                                </Component>
+                                <Component Id="LOGO167.PNG" DiskId="1" Guid="D26BDFB9-731F-477F-B95E-F2365EB84AE9">
+                                    <File Id="LOGO167.PNG" Name="logo167.png" Source="Limudisk\assets\icons\5-7\logo167.png" />
+                                </Component>
+                                <Component Id="LOGO180.PNG" DiskId="1" Guid="8FFA88C5-B9D8-4894-B5D0-A012FA9CC13D">
+                                    <File Id="LOGO180.PNG" Name="logo180.png" Source="Limudisk\assets\icons\5-7\logo180.png" />
+                                </Component>
+                                <Component Id="LOGO192.PNG" DiskId="1" Guid="7C9F2EF2-32E0-49F6-ADA8-9D7EB926CC10">
+                                    <File Id="LOGO192.PNG" Name="logo192.png" Source="Limudisk\assets\icons\5-7\logo192.png" />
+                                </Component>
+                                <Component Id="LOGO29.PNG" DiskId="1" Guid="BE2EB27E-5E31-49F4-83F4-56CDC8789F3B">
+                                    <File Id="LOGO29.PNG" Name="logo29.png" Source="Limudisk\assets\icons\5-7\logo29.png" />
+                                </Component>
+                                <Component Id="LOGO32.PNG" DiskId="1" Guid="ABBB340A-E99D-4EEA-8A19-F9CC6DD46A2B">
+                                    <File Id="LOGO32.PNG" Name="logo32.png" Source="Limudisk\assets\icons\5-7\logo32.png" />
+                                </Component>
+                                <Component Id="LOGO36.PNG" DiskId="1" Guid="F3E5F1F5-119F-461E-A90A-0981295B0060">
+                                    <File Id="LOGO36.PNG" Name="logo36.png" Source="Limudisk\assets\icons\5-7\logo36.png" />
+                                </Component>
+                                <Component Id="LOGO40.PNG" DiskId="1" Guid="99A79788-1B70-4C7E-A811-9B3388D79FAD">
+                                    <File Id="LOGO40.PNG" Name="logo40.png" Source="Limudisk\assets\icons\5-7\logo40.png" />
+                                </Component>
+                                <Component Id="LOGO44.PNG" DiskId="1" Guid="208454B6-C168-458A-B131-760959EBD165">
+                                    <File Id="LOGO44.PNG" Name="logo44.png" Source="Limudisk\assets\icons\5-7\logo44.png" />
+                                </Component>
+                                <Component Id="LOGO48.PNG" DiskId="1" Guid="419B9A4D-4C39-49DA-BF77-CB75F76BD777">
+                                    <File Id="LOGO48.PNG" Name="logo48.png" Source="Limudisk\assets\icons\5-7\logo48.png" />
+                                </Component>
+                                <Component Id="LOGO50.PNG" DiskId="1" Guid="551AC65D-4D90-4AAF-B792-37CB2E58A43A">
+                                    <File Id="LOGO50.PNG" Name="logo50.png" Source="Limudisk\assets\icons\5-7\logo50.png" />
+                                </Component>
+                                <Component Id="LOGO512.PNG" DiskId="1" Guid="2DB1F1D3-DB40-4D0E-9A4F-5CEF147E99D6">
+                                    <File Id="LOGO512.PNG" Name="logo512.png" Source="Limudisk\assets\icons\5-7\logo512.png" />
+                                </Component>
+                                <Component Id="LOGO57.PNG" DiskId="1" Guid="B929EAB2-1B71-4C37-A2BA-DDDB03C8EAC8">
+                                    <File Id="LOGO57.PNG" Name="logo57.png" Source="Limudisk\assets\icons\5-7\logo57.png" />
+                                </Component>
+                                <Component Id="LOGO58.PNG" DiskId="1" Guid="472B14C8-1B71-4AA3-8365-D1F8915B8487">
+                                    <File Id="LOGO58.PNG" Name="logo58.png" Source="Limudisk\assets\icons\5-7\logo58.png" />
+                                </Component>
+                                <Component Id="LOGO60.PNG" DiskId="1" Guid="FF55B96F-2567-4268-993A-A382C4B436D1">
+                                    <File Id="LOGO60.PNG" Name="logo60.png" Source="Limudisk\assets\icons\5-7\logo60.png" />
+                                </Component>
+                                <Component Id="LOGO66.PNG" DiskId="1" Guid="44F8EC58-8DB0-440D-8364-739AD50ACB97">
+                                    <File Id="LOGO66.PNG" Name="logo66.png" Source="Limudisk\assets\icons\5-7\logo66.png" />
+                                </Component>
+                                <Component Id="LOGO72.PNG" DiskId="1" Guid="DED46B58-ABE9-424D-AA13-301A15A6BFB7">
+                                    <File Id="LOGO72.PNG" Name="logo72.png" Source="Limudisk\assets\icons\5-7\logo72.png" />
+                                </Component>
+                                <Component Id="LOGO75.PNG" DiskId="1" Guid="B4521859-1403-4B7A-ACC3-5DE90660B693">
+                                    <File Id="LOGO75.PNG" Name="logo75.png" Source="Limudisk\assets\icons\5-7\logo75.png" />
+                                </Component>
+                                <Component Id="LOGO76.PNG" DiskId="1" Guid="2A520DCE-2A70-4972-83AA-1F5600499BB4">
+                                    <File Id="LOGO76.PNG" Name="logo76.png" Source="Limudisk\assets\icons\5-7\logo76.png" />
+                                </Component>
+                                <Component Id="LOGO80.PNG" DiskId="1" Guid="D1EC726D-E87A-41D7-9404-FE294A0BD70E">
+                                    <File Id="LOGO80.PNG" Name="logo80.png" Source="Limudisk\assets\icons\5-7\logo80.png" />
+                                </Component>
+                                <Component Id="LOGO87.PNG" DiskId="1" Guid="9FCFAD36-270D-496C-BE77-FBDCF6C9067C">
+                                    <File Id="LOGO87.PNG" Name="logo87.png" Source="Limudisk\assets\icons\5-7\logo87.png" />
+                                </Component>
+                                <Component Id="LOGO96.PNG" DiskId="1" Guid="369FC7B8-F896-4236-A422-0A1FE6E5DF37">
+                                    <File Id="LOGO96.PNG" Name="logo96.png" Source="Limudisk\assets\icons\5-7\logo96.png" />
+                                </Component>
+                            </Directory>
+                        </Directory>
+                        <Directory Id="UNZIP" Name="unzip">
+                            <Component Id="_7ZA.DLL" DiskId="1" Guid="608C4789-1208-497D-96DA-2C6D301AEB86">
+                                <File Id="_7ZA.DLL" Name="7za.dll" Source="Limudisk\assets\unzip\7za.dll" />
+                            </Component>
+                            <Component Id="_7ZA.EXE" DiskId="1" Guid="C33A9502-21C1-4778-B6D8-205269451318">
+                                <File Id="_7ZA.EXE" Name="7za.exe" Source="Limudisk\assets\unzip\7za.exe" />
+                            </Component>
+                            <Component Id="_7ZXA.DLL" DiskId="1" Guid="C7FD79FF-38B0-4E76-9CCF-5D799AD12EE3">
+                                <File Id="_7ZXA.DLL" Name="7zxa.dll" Source="Limudisk\assets\unzip\7zxa.dll" />
+                            </Component>
+                            <Directory Id="X64" Name="x64">
+                                <Component Id="_7ZA.DLL_1" DiskId="1" Guid="024A42ED-0138-4FA7-9209-745AF65B0E37">
+                                    <File Id="_7ZA.DLL_1" Name="7za.dll" Source="Limudisk\assets\unzip\x64\7za.dll" />
+                                </Component>
+                                <Component Id="_7ZA.EXE_1" DiskId="1" Guid="BFF87A45-A5EE-42C4-98A1-A4750D93FC31">
+                                    <File Id="_7ZA.EXE_1" Name="7za.exe" Source="Limudisk\assets\unzip\x64\7za.exe" />
+                                </Component>
+                                <Component Id="_7ZXA.DLL_1" DiskId="1" Guid="DE6DA5DD-8BD4-4C25-8001-91F12A194F05">
+                                    <File Id="_7ZXA.DLL_1" Name="7zxa.dll" Source="Limudisk\assets\unzip\x64\7zxa.dll" />
+                                </Component>
+                            </Directory>
+                        </Directory>
+                    </Directory>
+                    <Directory Id="META_INF" Name="META-INF">
+                        <Component Id="SIGNATURES.XML" DiskId="1" Guid="B555FCC9-16A0-4E2A-84B2-94C5F173917E">
+                            <File Id="SIGNATURES.XML" Name="signatures.xml" Source="Limudisk\META-INF\signatures.xml" />
+                        </Component>
+                        <Directory Id="AIR" Name="AIR">
+                            <Component Id="APPLICATION.XML" DiskId="1" Guid="ECC49967-9EA3-454D-AF31-3CD116A52531">
+                                <File Id="APPLICATION.XML" Name="application.xml" Source="Limudisk\META-INF\AIR\application.xml" />
+                            </Component>
+                            <Component Id="HASH" DiskId="1" Guid="638367D7-0E4D-4F37-A8ED-40F080D70B6C">
+                                <File Id="HASH" Name="hash" Source="Limudisk\META-INF\AIR\hash" />
+                            </Component>
+                        </Directory>
+                    </Directory>
+                </Directory>
+            </Directory>
+            <Directory Id="DesktopFolder" />
+            <Directory Id="ProgramMenuFolder">
+                <Directory Id="ProgramMenuDir" Name="Limudisk5-7">
+                    <Component Id="StartMenuShortcuts" Guid="69B21205-DF5B-448A-A98F-F11C4553C413">
+                        <RemoveFolder Id="ProgramMenuDir" On="uninstall" />
+                        <RegistryValue Root="HKCU" Key="Software\[Manufacturer]\[ProductName]" Type="string" Value="" />
+                        <Shortcut Id="UninstallApp" Name="Uninstall Limudisk-5-7" Description="Uninstalls the Limudisk app" Target="[System64Folder]msiexec.exe" Arguments="/x [ProductCode]" />
+                        <util:InternetShortcut Id="WebsiteShortcut" Name="Limudisk" Target="https://www.limudisk.com/" />
+                    </Component>
+                </Directory>
+            </Directory>
+        </Directory>
+        <Feature Id="DefaultFeature" Title="Main Feature" Level="1">
+            <ComponentRef Id="LIMUDISK_5_7.EXE" />
+            <ComponentRef Id="LIMUDISK.SWF" />
+            <ComponentRef Id="MIMETYPE" />
+            <ComponentRef Id="ADOBE_AIR.DLL" />
+            <ComponentRef Id="ADOBE_AIR.VCH" />
+            <ComponentRef Id="ADOBECP.VCH" />
+            <ComponentRef Id="CAPTIVEAPPENTRY.EXE" />
+            <ComponentRef Id="NPSWF32.DLL" />
+            <ComponentRef Id="WEBKIT.DLL" />
+            <ComponentRef Id="COPYING" />
+            <ComponentRef Id="COPYING_LGPL_2.1" />
+            <ComponentRef Id="COPYING_MPL_1.1" />
+            <ComponentRef Id="COPYING_1" />
+            <ComponentRef Id="COPYING_2" />
+            <ComponentRef Id="LGPL_LICENSE.TXT" />
+            <ComponentRef Id="NOTICE_WEBKIT.TXT" />
+            <ComponentRef Id="GAME3.ZIP" />
+            <ComponentRef Id="MUSIC_INFO.JSON" />
+            <ComponentRef Id="LOGO100.PNG" />
+            <ComponentRef Id="LOGO1024.PNG" />
+            <ComponentRef Id="LOGO114.PNG" />
+            <ComponentRef Id="LOGO120.PNG" />
+            <ComponentRef Id="LOGO128.PNG" />
+            <ComponentRef Id="LOGO144.PNG" />
+            <ComponentRef Id="LOGO152.PNG" />
+            <ComponentRef Id="LOGO16.PNG" />
+            <ComponentRef Id="LOGO167.PNG" />
+            <ComponentRef Id="LOGO180.PNG" />
+            <ComponentRef Id="LOGO192.PNG" />
+            <ComponentRef Id="LOGO29.PNG" />
+            <ComponentRef Id="LOGO32.PNG" />
+            <ComponentRef Id="LOGO36.PNG" />
+            <ComponentRef Id="LOGO40.PNG" />
+            <ComponentRef Id="LOGO44.PNG" />
+            <ComponentRef Id="LOGO48.PNG" />
+            <ComponentRef Id="LOGO50.PNG" />
+            <ComponentRef Id="LOGO512.PNG" />
+            <ComponentRef Id="LOGO57.PNG" />
+            <ComponentRef Id="LOGO58.PNG" />
+            <ComponentRef Id="LOGO60.PNG" />
+            <ComponentRef Id="LOGO66.PNG" />
+            <ComponentRef Id="LOGO72.PNG" />
+            <ComponentRef Id="LOGO75.PNG" />
+            <ComponentRef Id="LOGO76.PNG" />
+            <ComponentRef Id="LOGO80.PNG" />
+            <ComponentRef Id="LOGO87.PNG" />
+            <ComponentRef Id="LOGO96.PNG" />
+            <ComponentRef Id="LIMUDISKASSETS.SWF" />
+            <ComponentRef Id="PRELOADER.SWF" />
+            <ComponentRef Id="SIGNATURES.XML" />
+            <ComponentRef Id="APPLICATION.XML" />
+            <ComponentRef Id="HASH" />
+            <ComponentRef Id="StartMenuShortcuts" />
+            <ComponentRef Id="SecurityCheckAction.CA.dll" />
+            <ComponentRef Id="Newtonsoft.Json.dll" />
+            <ComponentRef Id="Newtonsoft.Json.xml" />
+            <ComponentRef Id="Microsoft.Deployment.WindowsInstaller.dll" />
+            <ComponentRef Id="Microsoft.Deployment.WindowsInstaller.xml" />
+            <ComponentRef Id="_7ZXA.DLL" />
+            <ComponentRef Id="_7ZA.EXE" />
+            <ComponentRef Id="_7ZXA.DLL_1" />
+            <ComponentRef Id="_7ZA.DLL" />
+            <ComponentRef Id="_7ZA.EXE_1" />
+            <ComponentRef Id="_7ZA.DLL_1" />
+        </Feature>
+        <UI />
+        <UIRef Id="WixUI_Minimal" />
+        <WixVariable Id="WixUIDialogBmp" Value="images\main.bmp" />
+        <WixVariable Id="WixUIBannerBmp" Value="images\banner.bmp" />
+        <PropertyRef Id="NETFRAMEWORK35" />
+        <Condition Message="Limudisk requires Microsoft .NET Framework 3.5 or greater needs to be installed for this installation to continue."><![CDATA[Installed OR NETFRAMEWORK35]]></Condition>
+        <Icon Id="DesktopIcon.exe" SourceFile="Limudisk\Limudisk-5-7.exe" />
+        <Icon Id="StartMenuIcon.exe" SourceFile="Limudisk\Limudisk-5-7.exe" />
+        <WixVariable Id="WixUILicenseRtf" Value="D:\JK\Limudisk-release\licensetext.rtf" />
+        <CustomAction Id="LaunchFile" FileKey="LIMUDISK_5_7.EXE" ExeCommand="" Return="asyncNoWait" />
+        <CustomAction Id="UninstallSecurityCheckAction" BinaryKey="BUnInstallSecurityCheckAction" DllEntry="LicenseClaimAction" Execute="deferred" Return="check" />
+        <Binary Id="BUnInstallSecurityCheckAction" SourceFile="dll\SecurityCheckAction.CA.dll" />
+        <InstallExecuteSequence>
+            <RemoveExistingProducts Before="InstallInitialize" />
+            <Custom Action="UninstallSecurityCheckAction" After="InstallInitialize">(NOT UPGRADINGPRODUCTCODE) AND (REMOVE="ALL")</Custom>
+            <Custom Action="LaunchFile" After="InstallFinalize" />
+        </InstallExecuteSequence>
+        <Icon Id="icon.ico" SourceFile="images\5-7.ico" />
+        <Property Id="ARPPRODUCTICON" Value="icon.ico" />
+    </Product>
+</Wix>
